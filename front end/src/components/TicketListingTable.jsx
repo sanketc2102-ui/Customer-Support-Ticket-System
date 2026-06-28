@@ -18,7 +18,7 @@ export default function TicketListingTable({ tickets }) {
             >
               <option value="open">Open</option>
               <option value="in_progress">In Progress</option>
-              <option value="resolved">Closed</option>
+              <option value="resolved">resolved</option>
             </select>
           </div>
 
