@@ -1,6 +1,22 @@
 import { useState } from "react";
 
 export default function TicketListingTable({ tickets }) {
+  const [status, setStatus] = useState(tickets.status);
+
+  const handleStatusChange = async (ticketId) => {
+    const res = await fetch(`http://localhost:8000/api/tickets/${ticketId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(status),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+  };
+
   return (
     <div>
       {tickets.map((ticket) => (
@@ -13,7 +29,7 @@ export default function TicketListingTable({ tickets }) {
             <label htmlFor="status">status</label>
             <select
               id="status"
-              value={ticket.status}
+              defaultValue={status}
               onChange={(e) => setStatus(e.target.value)}
             >
               <option value="open">Open</option>
@@ -32,7 +48,9 @@ export default function TicketListingTable({ tickets }) {
               <option value="general">General</option>
             </select>
           </div>
-          <button type="submit">edit status</button>
+          <button type="submit" onClick={() => handleStatusChange(ticket.id)}>
+            edit status
+          </button>
         </div>
       ))}
     </div>
