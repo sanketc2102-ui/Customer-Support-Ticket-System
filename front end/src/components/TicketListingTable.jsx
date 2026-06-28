@@ -25,8 +25,8 @@ export default function TicketListingTable({ tickets }) {
           <p>{ticket.createdAt}</p>
 
           <div className="field">
-            <label htmlFor="">category</label>
-            <select defaultValue={ticket.category}>
+            <label htmlFor="category">category</label>
+            <select id="category" defaultValue={ticket.category}>
               <option value="payment">Payment</option>
               <option value="technical">Technical</option>
               <option value="general">General</option>
