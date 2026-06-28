@@ -9,7 +9,7 @@ export default function TicketListingTable({ tickets }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(status),
+      body: JSON.stringify({ status }),
     });
 
     const data = await res.json();
