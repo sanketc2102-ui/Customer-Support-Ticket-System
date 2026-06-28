@@ -1,4 +1,6 @@
-export default function TicketListingTable({ tickets, handleStatusChange }) {
+import { useState } from "react";
+
+export default function TicketListingTable({ tickets }) {
   return (
     <div>
       {tickets.map((ticket) => (
@@ -12,11 +14,11 @@ export default function TicketListingTable({ tickets, handleStatusChange }) {
             <select
               id="status"
               value={ticket.status}
-              onChange={(e) => handleStatusChange(ticket.id, e.target.value)}
+              onChange={(e) => setStatus(e.target.value)}
             >
-              <option value="Open">Open</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Closed">Closed</option>
+              <option value="open">Open</option>
+              <option value="in_progress">In Progress</option>
+              <option value="resolved">Closed</option>
             </select>
           </div>
 
@@ -25,9 +27,9 @@ export default function TicketListingTable({ tickets, handleStatusChange }) {
           <div className="field">
             <label htmlFor="">category</label>
             <select defaultValue={ticket.category}>
-              <option value="Billing">Billing</option>
-              <option value="Technical">Technical</option>
-              <option value="General">General</option>
+              <option value="payment">Billing</option>
+              <option value="technical">Technical</option>
+              <option value="general">General</option>
             </select>
           </div>
           <button type="submit">edit status</button>
